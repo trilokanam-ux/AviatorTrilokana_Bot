@@ -1,8 +1,11 @@
 from telegram import Update, ReplyKeyboardMarkup, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
-
 import os
+
 TOKEN = os.getenv("BOT_TOKEN")
+
+# -------- IMAGE PATH FIX --------
+BASE_DIR = os.path.dirname(__file__)
 
 # Reply Keyboard
 reply_keyboard = ReplyKeyboardMarkup(
@@ -24,9 +27,9 @@ def get_cta():
 # START
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_photo(
-        photo=open("start.jpg", "rb"),
+        photo=open(os.path.join(BASE_DIR, "start.jpg"), "rb"),
         caption="""✈️ Aviator Game Guide
-    
+
 Aviator is a reaction-based game.
 
 A plane takes off and a number increases.
@@ -39,12 +42,12 @@ How a round works:
 4. The round ends randomly
 """,
         reply_markup=reply_keyboard
-)
+    )
 
 # MULTIPLIER
 async def multiplier(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_photo(
-        photo=open("multiplier.jpg", "rb"),
+        photo=open(os.path.join(BASE_DIR, "multiplier.jpg"), "rb"),
         caption="""The multiplier is a number that grows during the round.
 
 Example:
@@ -58,7 +61,7 @@ Higher values are harder to reach.""",
 # MECHANICS
 async def mechanics(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_photo(
-        photo=open("mechanics.jpg", "rb"),
+        photo=open(os.path.join(BASE_DIR, "mechanics.jpg"), "rb"),
         caption="""Each round is generated randomly.
 
 ✔️ Every round is independent  
@@ -70,7 +73,7 @@ async def mechanics(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # TIPS
 async def tips(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_photo(
-        photo=open("tips.jpg", "rb"),
+        photo=open(os.path.join(BASE_DIR, "tips.jpg"), "rb"),
         caption="""Players use different approaches:
 
 • Early stop — faster results  
@@ -100,11 +103,5 @@ app = ApplicationBuilder().token(TOKEN).build()
 app.add_handler(CommandHandler("start", start))
 app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 
-import asyncio
-
-async def main():
-    await app.initialize()
-    await app.start()
-    await app.updater.start_polling()
-
-asyncio.run(main())
+# ✅ IMPORTANT FIX
+app.run_polling()
