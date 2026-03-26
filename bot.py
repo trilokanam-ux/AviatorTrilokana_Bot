@@ -20,8 +20,8 @@ reply_keyboard = ReplyKeyboardMarkup(
 # CTA Buttons
 def get_cta():
     return InlineKeyboardMarkup([
-        [InlineKeyboardButton("✈️ PLAY NOW", url="https://crorebet-site.com/?show_reg_6=true&click_id=019cff88-d7d8-71cb-b818-eb296fa36888&value_1=551&value_2=3134752&val_cur=INR&sub_id10=&captcha=false&value_3=3164")],
-        [InlineKeyboardButton("🎁 150% BONUS FROM CROREBET", url="https://crorebet-site.com/?show_reg_6=true&click_id=019cff88-d7d8-71cb-b818-eb296fa36888&value_1=551&value_2=3134752&val_cur=INR&sub_id10=&captcha=false&value_3=3164")]
+        [InlineKeyboardButton("Join our Channel", url="https://t.me/+0w50dyQLSwExN2U9")],
+        [InlineKeyboardButton("Join our Community", url="https://t.me/+m8CCnLgcc2pmZjg1")]
     ])
 
 # START
