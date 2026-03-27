@@ -1,3 +1,4 @@
+
 from telegram import Update, ReplyKeyboardMarkup, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
 import os
@@ -40,13 +41,12 @@ How a round works:
 3. The multiplier increases
 4. The round ends randomly
 """,
-        reply_markup=reply_keyboard
+        reply_markup=get_cta()
     )
 
-    # Send CTA buttons as a separate message after the photo
     await update.message.reply_text(
-        "👇 Join us here:",
-        reply_markup=get_cta()
+        "Choose a topic below 👇",
+        reply_markup=reply_keyboard
     )
 
 # MULTIPLIER
