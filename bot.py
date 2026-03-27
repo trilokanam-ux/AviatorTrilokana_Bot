@@ -43,7 +43,10 @@ How a round works:
         reply_markup=get_cta()
     )
 
-   
+    await update.message.reply_text(
+        "👇",
+        reply_markup=reply_keyboard
+    )
 
 # MULTIPLIER
 async def multiplier(update: Update, context: ContextTypes.DEFAULT_TYPE):
