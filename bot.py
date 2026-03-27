@@ -1,4 +1,3 @@
-
 from telegram import Update, ReplyKeyboardMarkup, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
 import os
@@ -45,7 +44,7 @@ How a round works:
     )
 
     await update.message.reply_text(
-        "Choose a topic below 👇",
+        "👇",
         reply_markup=reply_keyboard
     )
 
@@ -101,6 +100,9 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     elif "Tips" in text:
         await tips(update, context)
+
+    else:
+        await start(update, context)
 
 # MAIN
 app = ApplicationBuilder().token(TOKEN).build()
