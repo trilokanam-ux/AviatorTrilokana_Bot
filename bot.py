@@ -4,7 +4,6 @@ import os
 
 TOKEN = os.getenv("BOT_TOKEN")
 
-# -------- IMAGE PATH FIX --------
 BASE_DIR = os.path.dirname(__file__)
 
 # Reply Keyboard
@@ -41,7 +40,7 @@ How a round works:
 3. The multiplier increases
 4. The round ends randomly
 """,
-        reply_markup=reply_keyboard
+        reply_markup=get_cta()  # ✅ Changed from reply_keyboard to get_cta()
     )
 
 # MULTIPLIER
@@ -76,9 +75,9 @@ async def tips(update: Update, context: ContextTypes.DEFAULT_TYPE):
         photo=open(os.path.join(BASE_DIR, "tips.jpg"), "rb"),
         caption="""Players use different approaches:
 
-• Early stop — faster results  
-• Balanced timing — moderate risk  
-• Late stop — high difficulty  
+- Early stop — faster results  
+- Balanced timing — moderate risk  
+- Late stop — high difficulty  
 
 There is no guaranteed outcome.""",
         reply_markup=get_cta()
@@ -103,5 +102,4 @@ app = ApplicationBuilder().token(TOKEN).build()
 app.add_handler(CommandHandler("start", start))
 app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 
-# ✅ IMPORTANT FIX
 app.run_polling()
