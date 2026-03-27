@@ -40,7 +40,13 @@ How a round works:
 3. The multiplier increases
 4. The round ends randomly
 """,
-        reply_markup=get_cta()  # ✅ Changed from reply_keyboard to get_cta()
+        reply_markup=reply_keyboard
+    )
+
+    # Send CTA buttons as a separate message after the photo
+    await update.message.reply_text(
+        "👇 Join us here:",
+        reply_markup=get_cta()
     )
 
 # MULTIPLIER
