@@ -20,7 +20,7 @@ reply_keyboard = ReplyKeyboardMarkup(
 def get_cta():
     return InlineKeyboardMarkup([
         [InlineKeyboardButton("Join our Channel", url="https://t.me/+0w50dyQLSwExN2U9")],
-        [InlineKeyboardButton("Join our Community", url="https://t.me/+m8CCnLgcc2pmZjg1")]
+        [InlineKeyboardButton("Download the Aviator Guide", url="https://www.thegambler.co.za/wp-content/uploads/2022/05/Aviator-PDF-11_compressed.pdf")]
     ])
 
 # START
